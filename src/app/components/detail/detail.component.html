@@ -1,8 +1,17 @@
-<p>detail works!</p>
-<nav>
-  <ul>
-    <li>
-      <a routerLink="/" routerLinkActive="active">Home</a>
-    </li>
-  </ul>
-</nav>
+<a routerLink="/" routerLinkActive="active" class="m-3 p-3">Home</a>
+
+<div class="container">
+  <mat-card>
+    <img
+      [src]="product.image"
+      alt="product-image"
+      height="500px"
+      width="550px"
+    />
+    <h3>
+      {{ product.title }}
+    </h3>
+    <h2>Price: {{ product.price }}$</h2>
+    <button mat-raised-button color="primary">Add To Cart</button>
+  </mat-card>
+</div>
