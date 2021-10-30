@@ -14,8 +14,9 @@ import { ProductsService } from './services/products.service';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
+import { DetailComponent } from './components/detail/detail.component';
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, ButtonComponent, HomeComponent],
+  declarations: [AppComponent, HeaderComponent, ButtonComponent, HomeComponent, DetailComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

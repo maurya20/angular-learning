@@ -1,3 +1,15 @@
+<nav>
+  <ul>
+    <li>
+      <a routerLink="/" routerLinkActive="active">Home</a>
+    </li>
+    <li>
+      <a routerLink="/detail" routerLinkActive="active">Detail</a>
+    </li>
+  </ul>
+</nav>
+<!-- The routed views render in the <router-outlet>-->
+<router-outlet></router-outlet>
 <div class="products-container">
   <div class="row">
     <div class="col-sm-4" *ngFor="let product of products">
@@ -8,7 +20,11 @@
           height="300px"
           width="330px"
         />
-        <h3 class="p-title">{{ product.title }}</h3>
+        <h3 class="p-title">
+          <a href="{{ '/detail/' + product.id }}" routerLinkActive="active">{{
+            product.title
+          }}</a>
+        </h3>
         <h2 class="p-title">Price: {{ product.price }}$</h2>
         <button mat-raised-button color="primary">Add To Cart</button>
       </mat-card>
