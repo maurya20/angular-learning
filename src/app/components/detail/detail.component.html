@@ -1,17 +1,29 @@
 <a routerLink="/" routerLinkActive="active" class="m-3 p-3">Home</a>
 
 <div class="container">
-  <mat-card>
-    <img
-      [src]="product.image"
-      alt="product-image"
-      height="500px"
-      width="550px"
-    />
-    <h3>
-      {{ product.title }}
-    </h3>
-    <h2>Price: {{ product.price }}$</h2>
-    <button mat-raised-button color="primary">Add To Cart</button>
-  </mat-card>
+  <div class="row">
+    <div class="col">
+      <mat-card>
+        <img
+          [src]="product.image"
+          alt="product-image"
+          height="500px"
+          width="550px"
+        />
+      </mat-card>
+    </div>
+    <div class="col">
+      <h3>
+        {{ product.title }}
+      </h3>
+      <h2>Price: {{ product.price }}$</h2>
+      <button mat-raised-button color="primary">Add To Cart</button>
+      <h3>Description: {{ product.description }}</h3>
+      <h3>Category: {{ product.category }}</h3>
+      <h3>
+        Ratings: {{ product.rating.rate }} from
+        {{ product.rating.count }} users.
+      </h3>
+    </div>
+  </div>
 </div>
