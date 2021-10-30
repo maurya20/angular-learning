@@ -1,0 +1,14 @@
+.products-container {
+  padding: 0.5em;
+  overflow-x: hidden;
+}
+.card {
+  width: 355px;
+  margin: 10px;
+}
+.p-title {
+  white-space: nowrap;
+  width: 330px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
