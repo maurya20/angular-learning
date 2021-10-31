@@ -9,9 +9,11 @@
           width="330px"
         />
         <h3 class="p-title">
-          <a href="{{ '/detail/' + product.id }}" routerLinkActive="active">{{
-            product.title
-          }}</a>
+          <a
+            routerLink="{{ '/detail/' + product.id }}"
+            routerLinkActive="active"
+            >{{ product.title }}</a
+          >
         </h3>
         <h2 class="p-title">Price: {{ product.price }}$</h2>
         <button mat-raised-button color="primary">Add To Cart</button>
