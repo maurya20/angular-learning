@@ -1,3 +1,43 @@
-<button [ngStyle]="{ 'background-color': color }" (click)="onLog()">
-  {{ text }}
-</button>
+<div class="container">
+  <h1>Testing Componenet</h1>
+
+  <mat-card
+    *ngFor="let cform of contactData; let i = index"
+    class="m-3 p-3"
+    class="card"
+  >
+    <span>{{ i }}</span>
+    <h3>{{ cform.fullName }}</h3>
+    <h3>{{ cform.email }}</h3>
+    <h3>{{ cform.message }}</h3>
+    <span role="button" (click)="onDelete(i)"
+      ><mat-icon [ngStyle]="{ color: 'red' }">delete_forever</mat-icon></span
+    >
+  </mat-card>
+
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <input
+      type="text"
+      name="fullName"
+      placeholder="Your full name"
+      formControlName="fullName"
+    />
+    <br />
+
+    <input
+      type="email"
+      name="email"
+      placeholder="Your email"
+      formControlName="email"
+    />
+    <br />
+
+    <textarea
+      name="message"
+      placeholder="Your message"
+      formControlName="message"
+    ></textarea>
+    <br />
+    <input type="submit" value="Send" />
+  </form>
+</div>

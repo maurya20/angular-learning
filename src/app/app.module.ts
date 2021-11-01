@@ -15,8 +15,16 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
 import { DetailComponent } from './components/detail/detail.component';
+import { CartService } from './services/cart.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, ButtonComponent, HomeComponent, DetailComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    ButtonComponent,
+    HomeComponent,
+    DetailComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -28,8 +36,10 @@ import { DetailComponent } from './components/detail/detail.component';
     MatGridListModule,
     MatIconModule,
     MatBadgeModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
-  providers: [ProductsService],
+  providers: [ProductsService, CartService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
