@@ -10,6 +10,14 @@
     <h3>{{ cform.fullName }}</h3>
     <h3>{{ cform.email }}</h3>
     <h3>{{ cform.message }}</h3>
+    <span
+      type="button"
+      data-bs-toggle="modal"
+      data-bs-target="#staticBackdrop"
+      (click)="onUpdate(i)"
+    >
+      <i class="material-icons">edit</i>
+    </span>
     <span role="button" (click)="onDelete(i)"
       ><mat-icon [ngStyle]="{ color: 'red' }">delete_forever</mat-icon></span
     >
@@ -40,4 +48,57 @@
     <br />
     <input type="submit" value="Send" />
   </form>
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="staticBackdrop"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="staticBackdropLabel">Edit Fields</h3>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="contactForm" (ngSubmit)="onUpdateSubmit()">
+            <input
+              type="text"
+              name="fullName"
+              placeholder="Your full name"
+              formControlName="fullName"
+              [defaultValue]="defValue"
+            />
+            <br />
+
+            <input
+              type="email"
+              name="email"
+              placeholder="Your email"
+              formControlName="email"
+            />
+            <br />
+
+            <textarea
+              name="message"
+              placeholder="Your message"
+              formControlName="message"
+            ></textarea>
+            <br />
+            <input type="submit" value="Submit" />
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal end -->
 </div>

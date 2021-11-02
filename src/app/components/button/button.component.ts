@@ -10,8 +10,9 @@ export class ButtonComponent implements OnInit {
   // @Input() color!: string;
   // @Input() text!: string;
   public contactForm!: FormGroup;
-
+  public editId!: number;
   contactData: any;
+  defValue: string = 'tu hi default';
   constructor(private formBuilder: FormBuilder) {
     this.createContactForm();
     this.contactData = [];
@@ -32,9 +33,32 @@ export class ButtonComponent implements OnInit {
   onSubmit() {
     console.log('Your form data : ', this.contactForm.value);
     this.contactData = [...this.contactData, this.contactForm.value];
-    console.log('after submit all data : ', this.contactData);
+
+    this.contactForm = this.formBuilder.group({
+      fullName: [''],
+      email: [''],
+      message: [''],
+    });
   }
   onDelete(id: number) {
     this.contactData.splice(id, 1);
+  }
+  onUpdate(id: number) {
+    this.editId = id;
+    this.contactData[id] = this.contactForm.value;
+  }
+  onUpdateSubmit() {
+    this.contactData[this.editId] = {
+      fullName: this.contactForm.value.fullName
+        ? this.contactForm.value.fullName
+        : this.contactData[this.editId].fullName,
+      email: this.contactForm.value.email
+        ? this.contactForm.value.email
+        : this.contactData[this.editId].email,
+      message: this.contactForm.value.message
+        ? this.contactForm.value.message
+        : this.contactData[this.editId].message,
+    };
+    console.log('after onUpdateSubmit : ', this.contactForm);
   }
 }
