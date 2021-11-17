@@ -44,6 +44,7 @@ export class ButtonComponent implements OnInit {
     this.contactData.splice(id, 1);
   }
   onUpdate(id: number) {
+    console.log('onupdate open : ', id);
     this.editId = id;
     this.contactData[id] = this.contactForm.value;
   }
@@ -59,6 +60,5 @@ export class ButtonComponent implements OnInit {
         ? this.contactForm.value.message
         : this.contactData[this.editId].message,
     };
-    console.log('after onUpdateSubmit : ', this.contactForm);
   }
 }

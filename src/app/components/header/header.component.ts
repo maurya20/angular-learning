@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -6,16 +7,22 @@ import { CartService } from 'src/app/services/cart.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent implements OnInit {
-  cartItems: any;
-  constructor(private cartService: CartService) {
-    this.cartItems = [];
-  }
-  updateCart() {
-    this.cartItems = this.cartService.getCartItems();
-    console.log('in heder badala     >>>', this.cartItems);
-  }
+export class HeaderComponent implements OnInit, OnDestroy {
+  cartItems: any = [];
+  private cartSubscription:  Subscription = new Subscription();
+  constructor(
+    private cartService: CartService,
+    
+  ) {}
+
   ngOnInit(): void {
-    this.updateCart();
+    this.cartItems = this.cartService.getCartItems();
+    this.cartSubscription = this.cartService.cartsUpdate.subscribe(() => {
+      this.cartItems = this.cartService.getCartItems();
+      console.log('in heder badala     >>>', this.cartItems);
+    });
+  }
+  ngOnDestroy() {
+   this.cartSubscription.unsubscribe();
   }
 }

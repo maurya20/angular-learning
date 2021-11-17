@@ -17,6 +17,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { DetailComponent } from './components/detail/detail.component';
 import { CartService } from './services/cart.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GridComponent } from './components/grid/grid.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ButtonComponent,
     HomeComponent,
     DetailComponent,
+    GridComponent, 
   ],
   imports: [
     BrowserModule,
@@ -38,6 +40,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatBadgeModule,
     FormsModule,
     ReactiveFormsModule,
+    
   ],
   providers: [ProductsService, CartService],
   bootstrap: [AppComponent],
